@@ -94,6 +94,7 @@ nav {
 .logo p { font-family: 'Cormorant Garamond', serif;
      font-size: 20px; 
      color: var(--white); 
+     text-transform: uppercase;
     }
 .nav-links { 
     display: flex; 
@@ -104,13 +105,28 @@ nav {
     letter-spacing: 0.2em; 
     color: var(--muted); 
     text-decoration: none; 
+    position: relative;
+
+}
+/* Soulignement animé */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;                  
+  height: 1px;
+  background: var(--accent); 
+  transition: width 0.3s ease;
 }
 
-/* LI */
-li:hover{
-    text-decoration: var(--accent);
+.nav-links a:hover::after {
+  width: 100%;              
 }
 
+.nav-links a:hover {
+  color: var(--white);       
+}
 /* bouton */
 .btn-primary{
     padding: 15px 50px;
@@ -234,3 +250,43 @@ li:hover{
 
 }
 /* ... le reste du CSS ... */
+
+.scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.scroll-line {
+  width: 60px;
+  height: 1px;
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Le trait jaune qui glisse de gauche à droite en boucle */
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-100%);
+  animation: scrollAnim 2s ease infinite;
+}
+
+@keyframes scrollAnim {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+/*  */
+.hero-set{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
