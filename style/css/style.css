@@ -82,6 +82,9 @@ section.hero {
 }
 
 /* NAV */
+
+
+
 nav { 
     display: flex; 
     align-items: center; 
@@ -164,3 +167,70 @@ li:hover{
     font-size: 16px; line-height: 1.8;
     margin-top: 48px; max-width: 420px; 
 }
+/*  */
+.burger { display: none; }
+
+.burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* BURGER VISIBLE sur mobile */
+@media (max-width: 640px) {
+
+  nav { padding: 20px 24px; }
+
+  .burger { display: flex; flex-direction: column; gap: 5px;
+            background: none; border: none; cursor: pointer; }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    padding: 20px 24px;
+    gap: 20px;
+    /* caché par défaut */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* quand ouvert */
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* liens un par un */
+  .nav-links li { opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+  .nav-links.open li:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+  .nav-links.open li:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.10s; }
+  .nav-links.open li:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
+  .nav-links.open li:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.20s; }
+
+  /* fond sombre */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 98;
+  }
+  .overlay.open { opacity: 1; pointer-events: all; }
+
+}
+/* ... le reste du CSS ... */

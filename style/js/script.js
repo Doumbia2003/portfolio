@@ -21,3 +21,20 @@ function animRing() {
   requestAnimationFrame(animRing);
 }
 animRing();
+
+// ── BURGER ──────────────────────────────
+const burger   = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
+const overlay  = document.getElementById('overlay');
+
+burger.addEventListener('click', function() {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+
+overlay.addEventListener('click', function() {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+  overlay.classList.remove('open');
+});
