@@ -26,7 +26,16 @@
   transition: width 0.3s, height 0.3s;
 }
 
-
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--accent);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
 
 /*  */
 :root {
@@ -181,7 +190,9 @@ nav {
 .hero-desc { 
     color: var(--muted); 
     font-size: 16px; line-height: 1.8;
-    margin-top: 48px; max-width: 420px; 
+    margin-top: 48px; 
+    max-width: 420px; 
+    display: inline-block;
 }
 /*  */
 .burger { display: none; }
@@ -249,6 +260,23 @@ nav {
   .overlay.open { opacity: 1; pointer-events: all; }
 
 }
+
+/*  */
+@media (max-width: 920px){
+  .btn-primary{
+    padding: 10px 40px;
+    width: 90%;
+    display: inline-block;
+    list-style: none;
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
 /* ... le reste du CSS ... */
 
 .scroll-hint {
@@ -285,6 +313,7 @@ nav {
 }
 /*  */
 .hero-set{
+  margin-top: 20vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
